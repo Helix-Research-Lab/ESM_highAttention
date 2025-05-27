@@ -6,4 +6,4 @@ This repository contains code and resources for finding high attention sites fro
 
 0. environment.yml file contains the package requirements
 1. ESM_matrices.py => get the attention matrices and representation matrix from the ESM model
-2. 
+2. ESM_ha_loc.py => Load the attention matrices (from ESM) and find the convergence layer and the High Attention (HA) sites. Save the protein to convergence layer and HA site dictionaries to data folder. 
