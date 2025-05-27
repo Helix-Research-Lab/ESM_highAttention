@@ -12,4 +12,7 @@ This repository contains code and resources for finding high attention sites fro
     - Use the heatmaps to identify the convergence layer and the High Attention (HA) sites. Save the protein to convergence layer and HA site dictionaries       to data folder (provided in Github). **.pkl files should be read in as binary
 3. ESM_ks.py
     - Perform the KS test per family. For each family, calculate the true family distance for each distance measure (ha_based, mean, max, cls) and 1000 
-    random iterations, and calculates the KS statistics (provided in Zenodo).
+    random iterations, and calculates the KS statistics (provided in Github and Zenodo).
+4. ESM_partial_dist.py
+    - Calculates the pairwise distance matrices for each distance measure to perform the silhouette score analysis (results in Github).
+   
