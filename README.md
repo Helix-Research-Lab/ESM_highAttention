@@ -1,6 +1,7 @@
 # ESM_highAttention
 
 This repository contains code and resources for finding high attention sites from the ESM attention matrices. 
+Associate Zenodo: https://zenodo.org/records/15509699
 
 ![overview](https://github.com/user-attachments/assets/e7c6bfe2-c5a7-42f5-8139-e3ac475fe1c3)
 
@@ -19,5 +20,5 @@ This repository contains code and resources for finding high attention sites fro
     - Takes in the pdbs files and the high attention sites and active sites to calculate the spatial distances between the HA sites and active sites 
     (results in Github).
 6. ESM_pfam_msa.py
-    Separates the full human protein fasta file into fasta files per family and performs multiple sequence alignment. Then finds the percent consensus at each HA site (results provided in Github).
+    Separates the full human protein fasta file into fasta files per family and performs multiple sequence alignment (provided in Zenodo). Then finds the percent consensus at each HA site (results provided in Github).
    
