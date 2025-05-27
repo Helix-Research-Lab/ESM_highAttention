@@ -13,6 +13,11 @@ def parse_fasta_biopython(filepath):
     return fasta_list
 
 def get_llm_data(seq,output_fp):
+    if not os.path.exists(f'{output_fp}/attention_matrices_mean_max_perLayer'):
+        os.makedirs(f'{output_fp}/attention_matrices_mean_max_perLayer')
+    if not os.path.exists(f'{output_fp}/representation_matrices'):
+        os.makedirs(f'{output_fp}/representation_matrices')
+        
     model, alphabet = esm.pretrained.esm2_t33_650M_UR50D()
     batch_converter = alphabet.get_batch_converter()
     model.eval()  # disables dropout for deterministic results
