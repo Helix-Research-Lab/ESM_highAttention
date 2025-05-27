@@ -54,8 +54,8 @@ def get_HA_vectors (prot, pid_HA):
                 ha_vec_set.append(heatmap[:, site])
         return (ha_vec_set)
 
-def get_representation_vecs(prot):
-    rep_filename = f'/oak/stanford/groups/rbaltman/esm_embeddings/esm2_t33_650M_uniprot_human/representation_matrices/{prot}.pt'
+def get_representation_vecs(prot, llm_output_filepath):
+    rep_filename = f'{llm_output_filepath}/representation_matrices/{prot}.pt'
     if (os.path.exists(rep_filename)):
         try:
             data = torch.load(rep_filename)
@@ -68,7 +68,7 @@ def get_representation_vecs(prot):
         vec_max,_ = torch.max(rep, 0)
     return vec_mean, vec_max, cls
     
-def get_distances(protein_list, pid_HA):
+def get_distances(protein_list, pid_HA, llm_output_filepath):
     dist_matrix = np.zeros((len(protein_list), len(protein_list)))
     dist_matrix_mean = np.zeros((len(protein_list), len(protein_list)))
     dist_matrix_max = np.zeros((len(protein_list), len(protein_list)))
@@ -76,12 +76,12 @@ def get_distances(protein_list, pid_HA):
     for i in range(0, len(protein_list)-1):
         protein_i = protein_list[i]
         vecs_i = get_HA_vectors(protein_i, pid_HA)
-        vec_mean_i, vec_max_i, vec_cls_i = get_representation_vecs(protein_i)
+        vec_mean_i, vec_max_i, vec_cls_i = get_representation_vecs(protein_i, llm_output_filepath)
 
         for j in range(i+1, len(protein_list)):
             protein_j = protein_list[j]
             vecs_j = get_HA_vectors(protein_j, pid_HA)
-            vec_mean_j, vec_max_j, vec_cls_j = get_representation_vecs(protein_j)
+            vec_mean_j, vec_max_j, vec_cls_j = get_representation_vecs(protein_j, llm_output_filepath)
 
             dist = cdist(vecs_i, vecs_j, metric='cosine')  # shape: (k, m)
             # Average of best-match distances (symmetric)
@@ -141,7 +141,7 @@ with open('../data/protein_highAttnSite.pkl', 'rb') as file:
 num_iter = 1000
 
 fasta_file = '../data/uniprot_human_full.fasta'
-llm_output_dir = '../outputs/llm_data'
+llm_output_dir = '../data/llm_data'
 full_prot_list = get_prot_names(fasta_file)
 for file in os.listdir(os.fsencode('{}/representation_matrices'.format(llm_output_dir))):
     prot_name = (str(os.fsdecode(file)).split('.')[0])
@@ -156,7 +156,7 @@ for family in batch_family_ids:
     if (len(protein_list_filtered) <= 1):
         print (f'Family {family} not big enough after filtering')
         continue
-    distance_matrix, distance_matrix_mean, distance_matrix_max, distance_matrix_cls = get_distances(protein_list_filtered, pid_HA)
+    distance_matrix, distance_matrix_mean, distance_matrix_max, distance_matrix_cls = get_distances(protein_list_filtered, pid_HA, llm_output_dir)
 
     exp_true = {}
     exp_iterations= {}

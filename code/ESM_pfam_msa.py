@@ -115,7 +115,7 @@ for pfam in pfam_prot:
         write_family_fasta(pfam, protFam_list)
         do_msa(pfam)
         
-        alignment = AlignIO.read('../data/msa/{}'.format(outfile), "fasta")
+        alignment = AlignIO.read(outfile, "fasta")
         consensus_sequence, consensus_percentages = get_consensus_with_percentages(alignment)
         
         for record in alignment:
@@ -126,6 +126,6 @@ for pfam in pfam_prot:
                     converted_site = convert_index(site, prot, seq)
                     if (converted_site is not None):
                         consensus_HA.append(consensus_percentages[converted_site])
-                        
+
 with open('../data/alignment_consensus_HA.pkl', 'wb') as file:
     pickle.dump(consensus_HA, file)

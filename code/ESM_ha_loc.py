@@ -90,7 +90,7 @@ def get_LoC_HA (protName):
         pickle.dump(pid_impLayer, file)
 
 fasta_file = '../data/uniprot_human_full.fasta'
-llm_data_filepath = '../outputs/llm_data'
+llm_data_filepath = '../data/llm_data'
 protName = get_prot_names(fasta_file)
 make_normalized_heatmaps(protName, llm_data_filepath)
 get_LoC_HA(protName)

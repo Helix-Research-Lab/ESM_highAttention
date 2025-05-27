@@ -95,4 +95,4 @@ if nonzero_diag:
 # -------------------- Save block --------------------
 os.makedirs(f"../data/distance_blocks/{exp_type}", exist_ok=True)
 np.save(f"../data/distance_blocks/{exp_type}/block_{array_idx}.npy", block)
-print(f"Saved: distance_blocks/{exp_type}/block_{array_idx}.npy")
+print(f"Saved: {exp_type}/block_{array_idx}.npy")
