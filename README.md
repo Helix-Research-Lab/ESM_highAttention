@@ -18,4 +18,6 @@ This repository contains code and resources for finding high attention sites fro
 5. ESM_spatial_dist.py
     - Takes in the pdbs files and the high attention sites and active sites to calculate the spatial distances between the HA sites and active sites 
     (results in Github).
+6. ESM_pfam_msa.py
+    Separates the full human protein fasta file into fasta files per family and performs multiple sequence alignment. Then finds the percent consensus at each HA site (results provided in Github).
    
