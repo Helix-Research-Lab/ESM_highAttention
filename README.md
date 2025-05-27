@@ -15,4 +15,7 @@ This repository contains code and resources for finding high attention sites fro
     random iterations, and calculates the KS statistics (provided in Github and Zenodo).
 4. ESM_partial_dist.py
     - Calculates the pairwise distance matrices for each distance measure to perform the silhouette score analysis (results in Github).
+5. ESM_spatial_dist.py
+    - Takes in the pdbs files and the high attention sites and active sites to calculate the spatial distances between the HA sites and active sites 
+    (results in Github).
    
