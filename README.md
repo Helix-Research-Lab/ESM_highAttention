@@ -1,7 +1,7 @@
 # ESM_highAttention
 
 This repository contains code and resources for finding high attention sites from the ESM attention matrices. 
-Associate Zenodo: https://zenodo.org/records/15509699
+Associated Zenodo: https://zenodo.org/records/15509699
 
 ![overview](https://github.com/user-attachments/assets/e7c6bfe2-c5a7-42f5-8139-e3ac475fe1c3)
 
