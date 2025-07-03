@@ -52,7 +52,8 @@ def get_LoC_HA (protName):
             indices_layer = {}
 
             layer_highAttend = {}
-            x = [i/prot_length for i in range(0, prot_length)]
+            #x = [i/prot_length for i in range(0, prot_length)]
+            x = np.linspace(0, 1, prot_length)
             for layer in range(0,33):
                 vec = heatmap[layer, :]
                 sorted_indices = np.argsort(vec)
@@ -65,6 +66,7 @@ def get_LoC_HA (protName):
                 pwlf_inst = pwlf.PiecewiseLinFit(x, sorted_values_desc)
                 breaks = pwlf_inst.fit(2)
 
+                #layer_highAttend[layer] = sorted_indices_desc[:math.floor(breaks[1]*prot_length)]
                 layer_highAttend[layer] = sorted_indices_desc[:math.floor(breaks[1]*prot_length)-1]
 
                 y_hat = pwlf_inst.predict(x)
